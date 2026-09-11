@@ -10,31 +10,45 @@ const propertyData = [
 
     {
         status: "For Sale",
+
         title: "The Elysian Villa",
+
         location: "Whitefield, Bengaluru",
+
         specs: "4 Beds · 4.5 Baths · 3,250 Sq Ft",
+
         price: "₹3.85 Cr",
 
         image:
             "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
     },
 
+
     {
         status: "For Sale",
+
         title: "Indiranagar Residence",
+
         location: "Indiranagar, Bengaluru",
+
         specs: "3 Beds · 3 Baths · 2,100 Sq Ft",
+
         price: "₹2.45 Cr",
 
         image:
             "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85"
     },
 
+
     {
         status: "For Rent",
+
         title: "Skyline Penthouse",
+
         location: "Hebbal, Bengaluru",
+
         specs: "2 Beds · 2.5 Baths · 1,800 Sq Ft",
+
         price: "₹65,000 / month",
 
         image:
@@ -42,6 +56,7 @@ const propertyData = [
     }
 
 ];
+
 
 
 /* ================= RENTAL PROPERTIES ================= */
@@ -50,48 +65,67 @@ const rentals = [
 
     {
         title: "Skyline Penthouse",
+
         location: "Hebbal, Bengaluru",
+
         specs: "2 Beds · 2.5 Baths · 1,800 Sq Ft",
+
         price: "₹65,000 / month",
 
         image:
             "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85"
     },
 
+
     {
         title: "Garden View Apartment",
+
         location: "Whitefield, Bengaluru",
+
         specs: "2 Beds · 2 Baths · 1,350 Sq Ft",
+
         price: "₹42,000 / month",
 
         image:
             "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
     },
 
+
     {
         title: "Indiranagar Courtyard Home",
+
         location: "Indiranagar, Bengaluru",
+
         specs: "3 Beds · 3 Baths · 2,000 Sq Ft",
+
         price: "₹78,000 / month",
 
         image:
             "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
     },
 
+
     {
         title: "Sarjapur Family Villa",
+
         location: "Sarjapur Road, Bengaluru",
+
         specs: "3 Beds · 3.5 Baths · 2,400 Sq Ft",
+
         price: "₹58,000 / month",
 
         image:
             "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
     },
 
+
     {
         title: "Koramangala Designer Flat",
+
         location: "Koramangala, Bengaluru",
+
         specs: "2 Beds · 2 Baths · 1,150 Sq Ft",
+
         price: "₹52,000 / month",
 
         image:
@@ -99,6 +133,7 @@ const rentals = [
     }
 
 ];
+
 
 
 /* ================= FEATURED PROPERTY RENDER ================= */
@@ -134,6 +169,7 @@ if (propertyGrid) {
 
                     </div>
 
+
                     <div class="property-body">
 
                         <h3>
@@ -143,6 +179,7 @@ if (propertyGrid) {
                         <div class="location">
                             ⌖ ${property.location}
                         </div>
+
 
                         <div class="specs">
 
@@ -156,6 +193,7 @@ if (propertyGrid) {
                             }
 
                         </div>
+
 
                         <div class="price">
                             ${property.price}
@@ -172,7 +210,8 @@ if (propertyGrid) {
 }
 
 
-/* ================= RENTAL SLIDER ================= */
+
+/* ================= RENTAL RENDER ================= */
 
 const rentalTrack =
     document.getElementById("rentalTrack");
@@ -197,6 +236,7 @@ if (rentalTrack) {
 
                     </div>
 
+
                     <div class="rent-meta">
 
                         <small>
@@ -208,6 +248,7 @@ if (rentalTrack) {
                         </small>
 
                     </div>
+
 
                     <div class="rent-body">
 
@@ -234,51 +275,9 @@ if (rentalTrack) {
 }
 
 
-/* ================= RENTAL SLIDER BUTTONS ================= */
-
-const rentPrev =
-    document.getElementById("rentPrev");
-
-const rentNext =
-    document.getElementById("rentNext");
-
-
-if (rentPrev && rentalTrack) {
-
-    rentPrev.addEventListener("click", () => {
-
-        rentalTrack.scrollBy({
-
-            left: -360,
-
-            behavior: "smooth"
-
-        });
-
-    });
-
-}
-
-
-if (rentNext && rentalTrack) {
-
-    rentNext.addEventListener("click", () => {
-
-        rentalTrack.scrollBy({
-
-            left: 360,
-
-            behavior: "smooth"
-
-        });
-
-    });
-
-}
-
 
 /* =====================================================
-   SUBTLE 3D PROPERTY CARD TILT
+   3D PROPERTY CARD TILT
 ===================================================== */
 
 function enable3DTilt() {
@@ -295,14 +294,7 @@ function enable3DTilt() {
             "mousemove",
             event => {
 
-                /*
-                    Disable the stronger tilt on
-                    touch/mobile devices.
-                */
-
-                if (
-                    window.innerWidth <= 700
-                ) {
+                if (window.innerWidth <= 700) {
                     return;
                 }
 
@@ -355,8 +347,7 @@ function enable3DTilt() {
             "mouseleave",
             () => {
 
-                card.style.transform =
-                    "";
+                card.style.transform = "";
 
             }
         );
@@ -366,16 +357,62 @@ function enable3DTilt() {
 }
 
 
-/*
-    Run AFTER the property cards have
-    been generated.
-*/
-
 enable3DTilt();
 
 
 
-/* ================= BUY / RENT / SELL TABS ================= */
+/* ================= RENTAL SLIDER ================= */
+
+const rentPrev =
+    document.getElementById("rentPrev");
+
+
+const rentNext =
+    document.getElementById("rentNext");
+
+
+if (rentPrev && rentalTrack) {
+
+    rentPrev.addEventListener(
+        "click",
+        () => {
+
+            rentalTrack.scrollBy({
+
+                left: -360,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+}
+
+
+if (rentNext && rentalTrack) {
+
+    rentNext.addEventListener(
+        "click",
+        () => {
+
+            rentalTrack.scrollBy({
+
+                left: 360,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+}
+
+
+
+/* ================= BUY / RENT / SELL ================= */
 
 const searchTabs =
     document.querySelectorAll(".search-tab");
@@ -396,41 +433,43 @@ searchTabs.forEach(tab => {
             });
 
 
-            tab.classList.add("active");
+            tab.classList.add(
+                "active"
+            );
 
 
             const mode =
                 tab.dataset.mode;
 
 
-            const searchMessage =
+            const message =
                 document.getElementById(
                     "searchMessage"
                 );
 
 
-            if (!searchMessage) {
+            if (!message) {
                 return;
             }
 
 
             if (mode === "rent") {
 
-                searchMessage.textContent =
+                message.textContent =
                     "Rental search selected — browse the rental homes below.";
 
             }
 
             else if (mode === "sell") {
 
-                searchMessage.textContent =
-                    "Selling a property? Submit your details in the enquiry section.";
+                message.textContent =
+                    "Selling your property? Tell us about it through the enquiry form.";
 
             }
 
             else {
 
-                searchMessage.textContent =
+                message.textContent =
                     "Buy search selected — choose your preferences and search.";
 
             }
@@ -442,10 +481,12 @@ searchTabs.forEach(tab => {
 
 
 
-/* ================= SEARCH BUTTON ================= */
+/* ================= SEARCH ================= */
 
 const searchBtn =
-    document.getElementById("searchBtn");
+    document.getElementById(
+        "searchBtn"
+    );
 
 
 if (searchBtn) {
@@ -460,30 +501,27 @@ if (searchBtn) {
                 );
 
 
-            if (!activeTab) {
-                return;
-            }
-
-
             const mode =
-                activeTab.dataset.mode;
+                activeTab
+                    ? activeTab.dataset.mode
+                    : "buy";
 
 
             const location =
                 document.getElementById(
-                    "location"
+                    "locationSelect"
                 )?.value;
 
 
             const type =
                 document.getElementById(
-                    "type"
+                    "typeSelect"
                 )?.value;
 
 
             const budget =
                 document.getElementById(
-                    "budget"
+                    "budgetSelect"
                 )?.value;
 
 
@@ -528,39 +566,7 @@ if (searchBtn) {
 
 
 
-/* ================= LOCATION AREA BUTTONS ================= */
-
-const areaButtons =
-    document.querySelectorAll(".area");
-
-
-areaButtons.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            areaButtons.forEach(item => {
-
-                item.classList.remove(
-                    "active"
-                );
-
-            });
-
-
-            button.classList.add(
-                "active"
-            );
-
-        }
-    );
-
-});
-
-
-
-/* ================= HEART / SAVE PROPERTY ================= */
+/* ================= HEART / SAVE ================= */
 
 function addHeartListeners() {
 
@@ -699,7 +705,7 @@ if (menuBtn && nav) {
 
 
 
-/* ================= ACTIVE NAVIGATION ================= */
+/* ================= ACTIVE NAV ================= */
 
 const sections =
     document.querySelectorAll(
@@ -772,7 +778,9 @@ window.addEventListener(
 
 
 
-/* ================= HERO MOUSE DEPTH ================= */
+/* =====================================================
+   HERO MOUSE DEPTH
+===================================================== */
 
 const hero =
     document.querySelector(".hero");

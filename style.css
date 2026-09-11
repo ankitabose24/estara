@@ -238,7 +238,75 @@ textarea {
     max-width: 670px;
 
     transform: translateZ(30px);
+
+    transition:
+        transform 0.2s ease-out;
 }
+
+
+/* ================= HERO TEXT ANIMATION ================= */
+
+.hero-title {
+    font-size: clamp(52px, 7vw, 90px);
+
+    line-height: 0.98;
+
+    margin-bottom: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    font-family: "Playfair Display", serif;
+
+    overflow: hidden;
+}
+
+.hero-line {
+    display: block;
+
+    opacity: 0;
+
+    transform: translateY(100%);
+
+    animation:
+        heroTextReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+}
+
+.line-one {
+    animation-delay: 0.25s;
+}
+
+.line-two {
+    animation-delay: 0.5s;
+}
+
+.line-three {
+    animation-delay: 0.75s;
+}
+
+.hero-line em {
+    font-style: italic;
+    color: #e1c58b;
+}
+
+@keyframes heroTextReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ================= HERO OTHER CONTENT ================= */
 
 .eyebrow {
     font-size: 11px;
@@ -254,25 +322,6 @@ textarea {
     color: #d9bf8b;
 }
 
-h1,
-h2,
-h3 {
-    font-family: "Playfair Display", serif;
-    font-weight: 500;
-}
-
-h1 {
-    font-size: clamp(50px, 7vw, 90px);
-    line-height: 0.98;
-
-    margin-bottom: 22px;
-}
-
-h1 em,
-h2 em {
-    font-weight: 500;
-}
-
 .hero-copy {
     font-size: 17px;
     max-width: 560px;
@@ -280,12 +329,55 @@ h2 em {
     color: rgba(255, 255, 255, 0.86);
 
     margin-bottom: 32px;
+
+    opacity: 0;
+
+    animation:
+        heroCopyReveal 0.9s ease forwards;
+
+    animation-delay: 1.05s;
+}
+
+@keyframes heroCopyReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
 .hero-actions {
     display: flex;
     gap: 13px;
+
+    opacity: 0;
+
+    animation:
+        heroActionsReveal 0.9s ease forwards;
+
+    animation-delay: 1.25s;
 }
+
+@keyframes heroActionsReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
 
 .btn {
     padding: 15px 22px;
@@ -353,6 +445,7 @@ h2 em {
 
 .search-card:hover {
     transform: translateY(43%);
+
     box-shadow:
         0 30px 70px rgba(18, 35, 29, 0.2);
 }
@@ -476,7 +569,9 @@ h2 em {
 
 .search-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(23, 54, 43, 0.2);
+
+    box-shadow:
+        0 10px 20px rgba(23, 54, 43, 0.2);
 }
 
 .search-message {
@@ -518,11 +613,6 @@ h2 em {
     color: var(--muted);
 }
 
-.centered {
-    text-align: center;
-    display: block;
-}
-
 .text-link {
     font-size: 12px;
     font-weight: 800;
@@ -534,7 +624,8 @@ h2 em {
 
     white-space: nowrap;
 
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease;
 }
 
 .text-link:hover {
@@ -644,7 +735,10 @@ h2 em {
 }
 
 .heart:hover {
-    transform: translateY(-2px) scale(1.08);
+    transform:
+        translateY(-2px)
+        scale(1.08);
+
     background: white;
 }
 
@@ -658,6 +752,7 @@ h2 em {
 
 .property-body h3 {
     font-size: 23px;
+
     margin-bottom: 5px;
 }
 
@@ -680,7 +775,8 @@ h2 em {
 
     font-size: 11px;
 
-    border-bottom: 1px solid var(--line);
+    border-bottom:
+        1px solid var(--line);
 
     padding-bottom: 15px;
 }
@@ -813,7 +909,7 @@ h2 em {
 }
 
 
-/* ================= RENTAL SLIDER ================= */
+/* ================= RENTAL ================= */
 
 .rental-section {
     background: white;
@@ -846,7 +942,9 @@ h2 em {
 
 .circle-btn:hover {
     transform: translateY(-3px);
+
     background: var(--green);
+
     color: white;
 
     box-shadow:
@@ -929,6 +1027,7 @@ h2 em {
 
 .rent-body h3 {
     font-size: 22px;
+
     margin: 4px 0;
 }
 
@@ -1277,6 +1376,7 @@ h2 em {
 
 .agent-card:hover .agent-photo {
     transform: scale(1.015);
+
     box-shadow:
         0 20px 40px rgba(18, 35, 29, 0.15);
 }
@@ -1525,6 +1625,7 @@ h2 em {
 
 .footer a:hover {
     color: white;
+
     transform: translateX(4px);
 }
 
@@ -1552,20 +1653,26 @@ h2 em {
 }
 
 
-/* ================= ANIMATION ================= */
+/* ================= HERO FLOAT ================= */
 
 @keyframes heroFloat {
 
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform:
+            translateY(0)
+            rotate(0deg);
     }
 
     50% {
-        transform: translateY(-12px) rotate(5deg);
+        transform:
+            translateY(-12px)
+            rotate(5deg);
     }
 
     100% {
-        transform: translateY(0) rotate(0deg);
+        transform:
+            translateY(0)
+            rotate(0deg);
     }
 
 }
@@ -1690,6 +1797,10 @@ h2 em {
 
         right: -40px;
         top: 15%;
+    }
+
+    .hero-title {
+        font-size: 52px;
     }
 
     .hero-copy {
@@ -1862,6 +1973,7 @@ h2 em {
     *::before,
     *::after {
         animation-duration: 0.01ms !important;
+
         transition-duration: 0.01ms !important;
     }
 
