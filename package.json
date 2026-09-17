@@ -2,7 +2,7 @@
   "name": "estara",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo 'No build required'"
+    "build": "node build.js"
   },
   "dependencies": {
     "nodemailer": "^10.0.10"

@@ -1,6 +1,7 @@
-# Dependencies
+# Dependencies & Build Output
 node_modules/
 backend/node_modules/
+dist/
 
 # Environment Variables & Secrets
 .env
