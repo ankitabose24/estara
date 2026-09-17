@@ -615,48 +615,6 @@ function addHeartListeners() {
 
 addHeartListeners();
 
-
-
-/* ================= ENQUIRY FORM ================= */
-
-const enquiryForm =
-    document.getElementById(
-        "enquiryForm"
-    );
-
-
-if (enquiryForm) {
-
-    enquiryForm.addEventListener(
-        "submit",
-        event => {
-
-            event.preventDefault();
-
-
-            const formMessage =
-                document.getElementById(
-                    "formMessage"
-                );
-
-
-            if (formMessage) {
-
-                formMessage.textContent =
-                    "Thank you — your enquiry has been received. ESTARA will contact you soon.";
-
-            }
-
-
-            enquiryForm.reset();
-
-        }
-    );
-
-}
-
-
-
 /* ================= MOBILE MENU ================= */
 
 const menuBtn =
@@ -845,4 +803,67 @@ if (hero && heroContent) {
         }
     );
 
+}
+
+/* =====================================================
+   ENQUIRY FORM SUBMISSION (SMTP / BACKEND)
+===================================================== */
+const enquiryForm = document.getElementById("enquiryForm");
+const formMessage = document.getElementById("formMessage");
+const enquirySubmitBtn = document.getElementById("enquirySubmitBtn");
+
+if (enquiryForm) {
+    enquiryForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // 1. Read input values
+        const payload = {
+            name: document.getElementById("enquiryName").value.trim(),
+            phone: document.getElementById("enquiryPhone").value.trim(),
+            email: document.getElementById("enquiryEmail").value.trim(),
+            type: document.getElementById("enquiryType").value,
+            message: document.getElementById("enquiryMessage").value.trim()
+        };
+
+        // 2. Loading state
+        enquirySubmitBtn.disabled = true;
+        enquirySubmitBtn.innerHTML = 'Sending... <span>⏳</span>';
+        formMessage.style.display = "none";
+        formMessage.style.color = "var(--green)";
+
+        try {
+            // 3. Send request to backend (localhost or Vercel serverless)
+            const apiUrl = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+                ? "http://localhost:5000/api/enquiry"
+                : "/api/enquiry";
+
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Success message
+                formMessage.textContent = "Thank you! Your enquiry has been received. We will contact you shortly.";
+                formMessage.style.color = "#15803d";
+                formMessage.style.display = "block";
+                enquiryForm.reset();
+            } else {
+                throw new Error(result.message || "Failed to send enquiry.");
+            }
+        } catch (error) {
+            // Error message
+            formMessage.textContent = error.message || "Something went wrong. Please check your connection and try again.";
+            formMessage.style.color = "#b91c1c";
+            formMessage.style.display = "block";
+        } finally {
+            enquirySubmitBtn.disabled = false;
+            enquirySubmitBtn.innerHTML = 'Send Enquiry <span>→</span>';
+        }
+    });
 }

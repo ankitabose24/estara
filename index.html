@@ -922,74 +922,55 @@
     </div>
 
 
-    <form class="enquiry-form"
-        id="enquiryForm">
+        <form class="enquiry-form" id="enquiryForm">
 
         <div class="form-row">
-
             <input
                 type="text"
+                id="enquiryName"
+                name="name"
                 placeholder="Your Name"
                 required>
 
-
             <input
                 type="tel"
+                id="enquiryPhone"
+                name="phone"
                 placeholder="Phone Number"
                 required>
-
         </div>
-
 
         <input
             type="email"
+            id="enquiryEmail"
+            name="email"
             placeholder="Email Address"
             required>
 
-
-        <select required>
-
-            <option value="">
-                I'm interested in...
-            </option>
-
-            <option>
-                Buying a Property
-            </option>
-
-            <option>
-                Renting a Property
-            </option>
-
-            <option>
-                Selling a Property
-            </option>
-
-            <option>
-                Property Investment
-            </option>
-
+        <select id="enquiryType" name="type" required>
+            <option value="">I'm interested in...</option>
+            <option value="Buying a Property">Buying a Property</option>
+            <option value="Renting a Property">Renting a Property</option>
+            <option value="Selling a Property">Selling a Property</option>
+            <option value="Property Investment">Property Investment</option>
         </select>
 
-
         <textarea
+            id="enquiryMessage"
+            name="message"
             rows="5"
             placeholder="Tell us about your requirements..."
             required></textarea>
 
-
         <button
             type="submit"
+            id="enquirySubmitBtn"
             class="btn btn-gold">
-
             Send Enquiry
             <span>→</span>
-
         </button>
 
-
-        <p class="form-message"
-            id="formMessage"></p>
+        <p class="form-message" id="formMessage" style="display: none;"></p>
 
     </form>
 
